@@ -7,7 +7,7 @@ function operate(leftOp, operator, rightOp) {
         case "*":
             return leftOp * rightOp;
         case "/":
-            if(rightOp === 0) {
+            if(rightOp == 0) {
                 return "ERROR";
             }
             return leftOp / rightOp;
@@ -15,5 +15,3 @@ function operate(leftOp, operator, rightOp) {
             return "ERROR";
     }
 }
-
-console.log(operate(10, "%", 10));
