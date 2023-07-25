@@ -1,74 +1,78 @@
+let currentInput = "";
+let currentOp = "";
+let currentTotal = 0;
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+function subtract(num1, num2) {
+    return num1 - num2;
+}
+function multiply(num1, num2) {
+    return num1 * num2;
+}
+function divide(num1, num2) {
+    return num1 / num2;
+}
+
+function percent(num) {
+    return num / 100;
+}
+
 function operate(leftOp, operator, rightOp) {
     switch(operator) {
         case "+":
-            return leftOp + rightOp;
+            currentTotal = add(leftOp, rightOp);
         case "-":
-            return leftOp - rightOp;
+            currentTotal = subtract(leftOp, rightOp);
         case "*":
-            return leftOp * rightOp;
+            currentTotal = multiply(leftOp, rightOp);
         case "/":
             if(rightOp == 0) {
-                return "ERROR";
+                currentTotal = "ERROR";
             }
-            return leftOp / rightOp;
-        default:
-            return "ERROR";
+            currentTotal = divide(leftOp, rightOp);
+        case "%":
+            currentTotal = percent(leftOp);
     }
 }
-const output = document.querySelector(".output");
 
-function getValue() {
-    const numbers = document.querySelectorAll(".numbers");
+function appendNumber(number) {
+    if(number === "0" && currentInput === "0") {
+        return;
+    } else if(number === "-" && (currentInput === "0" || currentInput === "0.") ) {
+        return;
+    } else if (number === "-") {
+        if(currentInput.charAt(0) === "-") {
+            currentInput = currentInput.replace("-", "");
+            updateResult();
+            return;
+        }
+        currentInput = `-${currentInput}`;
+        updateResult();
+        return;
+    } else if(number === "." && currentInput.includes(".")) {
+        return;
+    }
+    currentInput += number;
+    updateResult();
+}
 
-    numbers.forEach((number) => {
-        number.addEventListener("click", (e) => {
-
-            switch(e.target.value) {
-                case "0":
-                    if (output.textContent.length === 1 && output.textContent.includes("0")){
-                        break;
-                    }
-                    output.textContent += e.target.value;
-                    break;
-                case "1":
-                case "2":
-                case "3":
-                case "4":
-                case "5":
-                case "6":
-                case "7":
-                case "8":
-                case "9":
-                    if (output.textContent.length === 1 && output.textContent.includes("0")){
-                        output.textContent = e.target.value;
-                        break;
-                    }
-                    output.textContent += e.target.value;
-                    break;
-                case ".":
-                    if (output.textContent.includes(".")){
-                        break;
-                    }
-                    output.textContent += e.target.value;
-                    break;
-                case "-":
-                    if( (output.textContent.length === 1 && output.textContent.includes("0")) || (output.textContent.length === 2 && output.textContent.includes("0")) ) {
-                        break;
-                    }
-                    else if(output.textContent.charAt(0) === "-") {
-                        output.textContent = output.textContent.replace("-", "");
-                        break;
-                    }
-                    output.textContent = `-${output.textContent}`;
-                    break;
-
-            }
-        });
-
-    });
+function updateResult() {
+    const output = document.querySelector(".output");
+    output.textContent = currentInput || currentTotal || 0;
 }
 
 function calculate() {
-    getValue();
+
+    //get value from user
+    const numbers = document.querySelectorAll(".numbers");
+    numbers.forEach((number) => {
+        number.addEventListener("click", (e) => {
+            appendNumber(e.target.value);
+        });
+
+    });
 }
 calculate();
