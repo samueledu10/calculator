@@ -94,6 +94,7 @@ function calculate() {
             if(e.target.value === "=") {
                 if (currentOperator === "/" && rightOperand === 0) {
                     updateResult("ERROR");
+                    clear();
                     return;
                 }
                 rightOperand = +currentInput;
@@ -114,6 +115,7 @@ function calculate() {
                     currentInput = "0";
                     if (currentOperator === "/" && rightOperand === 0) {
                         updateResult("ERROR");
+                        clear();
                         return;
                     }
                     operate(leftOperand, currentOperator, rightOperand);
@@ -178,18 +180,20 @@ function clear() {
     rightOperand = 0;
     currentOperator = "";
     currentTotal = 0;
-    updateResult(currentInput);
 }
-
+// clear entire math operation
 const clearBtn = document.querySelector(".clear");
-clearBtn.addEventListener("click", clear);
+clearBtn.addEventListener("click", () => {
+    clear();
+    updateResult(currentInput);
+});
 
 function clearEntry() {
     currentInput = "0";
     updateResult(currentInput);
 }
-
+// clear current input
 const clearEntryBtn = document.querySelector(".clear-entry");
 clearEntryBtn.addEventListener("click", clearEntry);
-g
+
 calculate();
