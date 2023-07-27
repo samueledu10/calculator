@@ -170,4 +170,26 @@ function calculate() {
         }
     });
 }
+
+function clear() {
+    currentInput = "0";
+    hasLeftOperand = false;
+    leftOperand = 0;
+    rightOperand = 0;
+    currentOperator = "";
+    currentTotal = 0;
+    updateResult(currentInput);
+}
+
+const clearBtn = document.querySelector(".clear");
+clearBtn.addEventListener("click", clear);
+
+function clearEntry() {
+    currentInput = "0";
+    updateResult(currentInput);
+}
+
+const clearEntryBtn = document.querySelector(".clear-entry");
+clearEntryBtn.addEventListener("click", clearEntry);
+g
 calculate();
