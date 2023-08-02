@@ -63,15 +63,35 @@ button {
 .operators button {
     background-color: #ff9500ed;
 }
-/* 
-.operators {
-    margin-left: -8px;
-} */
+
+.operators button:hover {
+    background-color: #efac4fed;
+} 
+
+.operators button:active {
+    background-color: #656363eb;
+}
 
 .numbers button {
     background-color: #7e7c7ceb;
 }
 
+.numbers button:hover {
+    background-color: #a09b9beb;
+}
+
+.numbers button:active {
+    background-color: #e2dbdbeb;
+}
+
 .clear-and-percent button {
-    background-color: #656363eb;;
+    background-color: #656363eb;
+}
+
+.clear-and-percent button:hover {
+    background-color: #767474eb;
+}
+
+.clear-and-percent button:active {
+    background-color: #e2dbdbeb;
 }
