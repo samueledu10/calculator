@@ -1,0 +1,77 @@
+* {
+    font-family: Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+body {
+    background-color: rgb(32, 89, 71);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator-container {
+    width: 232px;
+    height: 320px;
+    border: 1px solid grey;
+    border-radius: 11px;
+}
+
+.output {
+    height: 80px;
+    display: flex;
+    align-items:flex-end;
+    justify-content: flex-end;
+    padding-right: 10px;
+    background-color: #505050ee;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    font-size: 48px;
+}
+
+button {
+    height: 48px;
+    width: 58px;
+    border: 0.5px solid #505050eb;
+    color: white;
+    font-size: 22px;
+}
+
+.numbers, .clear-and-percent {
+    width: 174px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.sign {
+    border-bottom-left-radius: 10px;
+}
+
+.equal {
+    border-bottom-right-radius: 10px;
+}
+
+.input-container {
+    display: flex;
+    font-size: 0;
+}
+
+.operators button {
+    background-color: #ff9500ed;
+}
+/* 
+.operators {
+    margin-left: -8px;
+} */
+
+.numbers button {
+    background-color: #7e7c7ceb;
+}
+
+.clear-and-percent button {
+    background-color: #656363eb;;
+}
